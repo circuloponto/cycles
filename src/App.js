@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from 'react';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { SignedIn, SignedOut } from '@clerk/clerk-react';
+import LandingPage from './LandingPage';
+import AppButtonsDisabled from './AppButtonsDisabled';
+import CheckoutForm from './CheckOutForm';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/app" element={
+        <SignedIn>
+          <AppButtonsDisabled />
+        </SignedIn>
+      } />
+      <Route path="/checkout" element={<CheckoutForm />} />
+    </Routes>
   );
 }
 

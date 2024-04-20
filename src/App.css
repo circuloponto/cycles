@@ -1,38 +1,271 @@
+/* App.css */
 .App {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.buttons {
+  display: flex;
+}
+.fretboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* width: 700px; */
+  height: auto;
+}
+.string {
+  width: 80vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 1px;
+}
+.fret {
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.645);
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  justify-content: center;
+  font-size: 12px;
+  margin: 0 2px 0 0;
+}
+.highlight {
+  background-color: yellow;
+}
+.active {
+  /* background-color: yellow; */
+  box-shadow: 10px 10px 10px black !important;
+  z-index: 100;
+  border: 1px solid black !important;
+}
+.displayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 500px;
+  height: 300px;
+  /* border: 1px solid black; */
+}
+.chordNames {
+  font-size: 50px;
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intervals {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.intervalIndividual {
+  width: 50px;
+  margin: 0 10px 0 0;
+  border-radius: 10px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.noteNames {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.notesIndividual {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px 0 0;
+  border-radius: 10px;
+}
+/* Styling for the slider element */
+.slider {
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 500px; /* Full-width */
+  height: 15px; /* Specified height */
+  background: #ddd; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (cross-browser) */
+  transition: opacity 0.2s; /* Transition for hover effect */
+}
+
+.slider:hover {
+  opacity: 1; /* Fully opaque on hover */
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #1a1a1b; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4caf50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+.buttons {
+  /* box-shadow: 1px 1px 11px rgba(0, 0, 0, 0.3), -1px -1px 11px rgba(0, 0, 0, 0.3); */
+  margin: 19px 0px 40px 0;
+  border-radius: 50px;
+  width: 1100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button {
+  padding: 10px 20px; /* Larger padding for bigger buttons */
+  width: 150px;
+  font-size: 16px; /* Larger font size for better readability */
+  color: white; /* White text color */
+  background-color: #232424; /* Vibrant blue background */
+  border: none; /* No borders */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  outline: none; /* No outline */
+  transition: background-color 0.3s, transform 0.2s;
+  margin: 0 10px 0 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* Smooth transition for background color and transform */
+}
+
+.button:hover {
+  background-color: #333535; /* Darker shade of button color on hover */
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+.button:disabled {
+  text-decoration: line-through;
+  background-color: rgb(110, 109, 109); /* Gray out the button when disabled */
+  cursor: default; /* Default cursor on disabled state */
+  transform: none; /* No transform on disabled state */
+}
+.buttonInit {
+  padding: 10px 20px; /* Larger padding for bigger buttons */
+  width: 220px;
+  font-size: 16px; /* Larger font size for better readability */
+  color: white; /* White text color */
+  background-color: #232424; /* Vibrant blue background */
+  border: none; /* No borders */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  outline: none; /* No outline */
+  transition: background-color 0.3s, transform 0.2s;
+  margin: 0 10px 0 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.select-container {
+  position: relative;
+  display: inline-block;
+  width: 150px; /* Set width as needed */
+  margin: 0 10px 0 0;
+}
+
+.select {
+  padding: 10px 20px; /* Larger padding for bigger buttons */
+  font-size: 16px; /* Larger font size for better readability */
+  width: 130px;
+  height: 40px; /* Adjust height as necessary */
+  padding: 8px 38px 8px 10px; /* Padding for text and icon space */
+  color: #333;
+  border: 3px solid #282828;
+  border-radius: 5px;
+  /*  appearance: none; */ /* Important to hide native dropdown arrow */
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+.select:disabled {
+  text-decoration: line-through;
+  background-color: rgb(110, 109, 109); /* Gray out the button when disabled */
+  cursor: default; /* Default cursor on disabled state */
+  transform: none; /* No transform on disabled state */
+}
+.selectRoots {
+  width: 100px;
+}
+.meta-harmony {
+  font-size: 60px;
+  font-weight: bold;
+  color: transparent;
+  background-image: linear-gradient(to right, #fef880, #f3888a, #6aa2d8);
+  filter: saturate(200%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  /* text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);  */ /* Adds shadow for better readability */
+}
+.audio {
+  width: 20px;
+}
+
+/* auth */
+/* src/components/LandingPage.css */
+.landing {
+  font-family: Arial, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  background-color: #f4f4f4;
+  padding: 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.intro,
+.features {
+  padding: 20px;
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.features ul {
+  list-style: none;
+  padding: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.footer {
+  margin-top: auto;
+  background-color: #222;
   color: white;
+  text-align: center;
+  padding: 10px;
+}
+.auth-links a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #0077cc;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.auth-links a:hover {
+  text-decoration: underline;
 }
